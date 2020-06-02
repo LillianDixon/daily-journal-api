@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonfiy
+from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from flask_heroku import Heroku
@@ -14,6 +14,11 @@ app.secret_key = 'secretKey'
 
 heroku = Heroku(app)
 db = SQLAlchemy(app)
+
+
+@app.route("/")
+def home():
+    return"<h1>Hi from Flask</h1>"
 
 class User(db.Model):
     __tablename__= 'user'
