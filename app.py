@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from flask_heroku import Heroku
-from flask_login import LoginManager, login_user
+from flask_login import LoginManager, login_user, current_user
 from datetime import datetime
 
 app = Flask(__name__)
@@ -76,6 +76,13 @@ def register():
         db.session.commit()
         return jsonify('Created')
     return jsonify('something went wrong')
+
+# @app.route('/logged_in', methods=["GET"])
+# def logged_in():
+#     if current_user.is_authenticated:
+#         return jsonify('Logged_In')
+#     else:
+#         return jsonify("Not_Logged_In")
 
 @app.route('/get-users', methods=['GET'])
 def get_users():
