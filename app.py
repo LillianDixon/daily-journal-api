@@ -77,18 +77,6 @@ def register():
         return jsonify('Created')
     return jsonify('something went wrong')
 
-# @app.route('/logged_in', methods=["GET"])
-# def logged_in():
-#     if current_user.is_authenticated:
-#         return jsonify('Logged_In')
-#     else:
-#         return jsonify("Not_Logged_In")
-
-@app.route("/logout")
-def logout():
-    logout_user()
-    return jsonify("Logged_Out")
-
 @app.route('/get-users', methods=['GET'])
 def get_users():
     all_users = db.session.query(User.id, User.name, User.email, User.password).all()
